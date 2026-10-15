@@ -171,6 +171,47 @@ a { color: inherit; }
   color: var(--prune);
 }
 
+/* ========== GALERIE (2 colonnes sur téléphone, même style que les cartes) ========== */
+.galerie {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 28px;
+}
+.galerie__item {
+  margin: 0;
+  overflow: hidden;
+  background: var(--creme);
+  border-radius: var(--rayon);
+  box-shadow: 0 4px 14px rgba(74, 29, 61, .1);
+  border-top: 4px solid var(--or);
+}
+/* Emplacement carré : même taille pour toutes les images */
+.galerie__photo {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, var(--prune) 0%, var(--prune-clair) 100%);
+}
+.galerie__icone { font-size: 2rem; opacity: .6; }
+/* La vraie photo recouvre l'emplacement temporaire sans être déformée */
+.galerie__photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.galerie__item figcaption {
+  padding: 12px 8px;
+  text-align: center;
+  font-size: .95rem;
+  font-weight: 700;
+  color: var(--prune);
+}
+
 /* ========== CONTACT ========== */
 .contact { text-align: center; }
 .contact h2 { margin-bottom: .4em; }
@@ -203,6 +244,7 @@ a { color: inherit; }
   .section { padding: 80px 0; }
   .hero { padding-top: calc(var(--hauteur-entete) + 90px); padding-bottom: 100px; }
   .cartes { grid-template-columns: repeat(3, 1fr); }
+  .galerie { grid-template-columns: repeat(3, 1fr); gap: 16px; }
   .bouton--whatsapp { width: auto; }
   .bouton:hover { transform: translateY(-2px); }
 }
